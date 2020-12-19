@@ -1,9 +1,6 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -11,7 +8,7 @@ import java.util.Date;
 public class Master {
 
     @Id
-    @Column(name = "ID")
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long ID;
 
     @Column(name = "first_name")
@@ -28,6 +25,9 @@ public class Master {
 
     @Column(name = "birth_day")
     private Date birthDay;
+
+    @OneToOne(targetEntity = Address.class)
+    private Address address;
 
 
 
@@ -77,5 +77,13 @@ public class Master {
 
     public void setBirthDay(Date birthDay) {
         this.birthDay = birthDay;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

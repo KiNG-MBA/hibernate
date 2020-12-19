@@ -1,16 +1,14 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "student")
 public class Student {
     @Id
-    @Column(name = "Id")
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long ID;
 
     @Column(name = "first_name")
@@ -24,6 +22,15 @@ public class Student {
 
     @Column(name = "birth_day")
     private Date birthDay;
+
+    @ManyToMany
+    @JoinTable(name = "Msr_Stu", joinColumns =@JoinColumn (name = "fk_Stu_ID"),
+            inverseJoinColumns =@JoinColumn(name = "FK_msr_ID"))
+    private Set<Master> masters;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name= "fk_address",nullable = false)
+    private Address address;
 
 
 
@@ -65,5 +72,21 @@ public class Student {
 
     public void setBirthDay(Date birthDay) {
         this.birthDay = birthDay;
+    }
+
+    public Set<Master> getMasters() {
+        return masters;
+    }
+
+    public void setMasters(Set<Master> masters) {
+        this.masters = masters;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

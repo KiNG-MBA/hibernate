@@ -1,15 +1,15 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Scanner;
+import javax.persistence.*;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "address")
 public class Address {
 
     @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long ID;
 
     private Long number;
@@ -21,6 +21,12 @@ public class Address {
     private String postalAddress;
 
     private Long postalCode;
+
+    @OneToOne(targetEntity = Master.class)
+    private Master master;
+
+    @OneToMany(mappedBy ="address")
+    private Set<Student> students;
 
 
 
@@ -72,5 +78,19 @@ public class Address {
         this.postalCode = postalCode;
     }
 
+    public Master getMaster() {
+        return master;
+    }
 
+    public void setMaster(Master master) {
+        this.master = master;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 }
