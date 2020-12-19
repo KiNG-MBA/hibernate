@@ -12,6 +12,7 @@ public class Address {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long ID;
 
+    @Column(unique = true,nullable = false)
     private Long number;
 
     private String state;

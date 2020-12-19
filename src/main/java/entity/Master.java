@@ -17,7 +17,7 @@ public class Master {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "teacher_code")
+    @Column(name = "teacher_code",nullable = false,unique = true)
     private Long teacherCode;
 
     @Column(name = "salary")
