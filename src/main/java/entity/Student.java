@@ -7,11 +7,10 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "Master")
-public class Master {
-
+@Table(name = "student")
+public class Student {
     @Id
-    @Column(name = "ID")
+    @Column(name = "Id")
     private Long ID;
 
     @Column(name = "first_name")
@@ -20,11 +19,8 @@ public class Master {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "teacher_code")
-    private Long teacherCode;
-
-    @Column(name = "salary")
-    private Double salary;
+    @Column(name = "student_code")
+    private Long studentCode;
 
     @Column(name = "birth_day")
     private Date birthDay;
@@ -55,20 +51,12 @@ public class Master {
         this.lastName = lastName;
     }
 
-    public Long getTeacherCode() {
-        return teacherCode;
+    public Long getStudentCode() {
+        return studentCode;
     }
 
-    public void setTeacherCode(Long teacherCode) {
-        this.teacherCode = teacherCode;
-    }
-
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
+    public void setStudentCode(Long studentCode) {
+        this.studentCode = studentCode;
     }
 
     public Date getBirthDay() {
