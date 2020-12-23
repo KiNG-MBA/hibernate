@@ -11,7 +11,7 @@ import java.util.Date;
 public class Master {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
 
     @Column(name = "first_name")
@@ -20,7 +20,7 @@ public class Master {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "teacher_code",nullable = false,unique = true)
+    @Column(name = "teacher_code", nullable = false, unique = true)
     private Long teacherCode;
 
     @Column(name = "salary")
@@ -32,7 +32,6 @@ public class Master {
 
     @OneToOne(targetEntity = Address.class)
     private Address address;
-
 
 
     public Long getID() {

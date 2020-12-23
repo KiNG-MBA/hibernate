@@ -12,7 +12,7 @@ public abstract class JpaDaoImpl<E, I> {
     public void save(E entity) {
         try {
             entityManager.persist(entity);
-        }catch (Exception exception){
+        } catch (Exception exception) {
             exception.getStackTrace();
         }
     }

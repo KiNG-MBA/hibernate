@@ -8,7 +8,7 @@ import java.util.Set;
 @Table(name = "student")
 public class Student {
     @Id
-    @GeneratedValue( strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
 
     @Column(name = "first_name")
@@ -25,14 +25,13 @@ public class Student {
     private Date birthDay;
 
     @ManyToMany
-    @JoinTable(name = "Msr_Stu", joinColumns =@JoinColumn (name = "fk_Stu_ID"),
-            inverseJoinColumns =@JoinColumn(name = "FK_msr_ID"))
+    @JoinTable(name = "Msr_Stu", joinColumns = @JoinColumn(name = "fk_Stu_ID"),
+            inverseJoinColumns = @JoinColumn(name = "FK_msr_ID"))
     private Set<Master> masters;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "fk_address",nullable = false)
+    @JoinColumn(name = "fk_address", nullable = false)
     private Address address;
-
 
 
     public Long getID() {

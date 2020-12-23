@@ -1,6 +1,4 @@
-import dao.AddressImpl;
-import dao.MasterImpl;
-import dao.StudentImpl;
+
 import entity.Address;
 import entity.Master;
 import entity.Student;
@@ -10,11 +8,8 @@ import util.JPAUtil;
 import javax.persistence.EntityManager;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.Date;
 
 public class Main {
-
 
     public static void main(String[] args) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -24,20 +19,16 @@ public class Main {
         curd.initializeDao(entityManager);
 
 
+        Address address = curd.createAddress(2134L, "tehran", "tehran", "makatab", 123496L);
 
-
-
-       Address address = curd.createAddress(2134L,"tehran","tehran","makatab",123496L);
-
-       Master master1 = curd.createMaster("sajad","jaafri",123L,49.23, format.parse("1990-11-19"),address);
-       Student student1 = curd.createStudent("masoud","hassannia",732L, format.parse("1994-02-01"),address);
+        Master master1 = curd.createMaster("sajad", "jaafri", 123L, 49.23, format.parse("1990-11-19"), address);
+        Student student1 = curd.createStudent("masoud", "hassannia", 732L, format.parse("1994-02-01"), address);
 
         entityManager.getTransaction().commit();
         entityManager.close();
         JPAUtil.shutdown();
 
     }
-
 
 
 }
