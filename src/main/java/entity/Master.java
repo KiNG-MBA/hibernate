@@ -1,14 +1,17 @@
 package entity;
 
+import org.hibernate.annotations.Check;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Check(constraints = "salary > 0")
 @Table(name = "Master")
 public class Master {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.AUTO)
     private Long ID;
 
     @Column(name = "first_name")
@@ -24,6 +27,7 @@ public class Master {
     private Double salary;
 
     @Column(name = "birth_day")
+    @Temporal(TemporalType.DATE)
     private Date birthDay;
 
     @OneToOne(targetEntity = Address.class)

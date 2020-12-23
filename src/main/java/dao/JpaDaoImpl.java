@@ -10,7 +10,11 @@ public abstract class JpaDaoImpl<E, I> {
     }
 
     public void save(E entity) {
-        entityManager.persist(entity);
+        try {
+            entityManager.persist(entity);
+        }catch (Exception exception){
+            exception.getStackTrace();
+        }
     }
 
     public void update(E entity) {

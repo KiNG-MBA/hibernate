@@ -9,22 +9,22 @@ import java.util.Set;
 public class Address {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.AUTO)
     private Long ID;
 
     @Column(unique = true,nullable = false)
     private Long number;
-
+    @Column(name="state")
     private String state;
-
+    @Column(name="city")
     private String city;
-
+    @Column(name="post_address")
     private String postalAddress;
-
+    @Column(name="post_code")
     private Long postalCode;
 
-    @OneToOne(targetEntity = Master.class)
-    private Master master;
+//    @OneToOne(targetEntity = Master.class)
+//    private Master master;
 
     @OneToMany(mappedBy ="address")
     private Set<Student> students;
@@ -79,13 +79,13 @@ public class Address {
         this.postalCode = postalCode;
     }
 
-    public Master getMaster() {
-        return master;
-    }
-
-    public void setMaster(Master master) {
-        this.master = master;
-    }
+//    public Master getMaster() {
+//        return master;
+//    }
+//
+//    public void setMaster(Master master) {
+//        this.master = master;
+//    }
 
     public Set<Student> getStudents() {
         return students;

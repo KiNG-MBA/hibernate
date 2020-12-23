@@ -8,7 +8,7 @@ import java.util.Set;
 @Table(name = "student")
 public class Student {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.AUTO)
     private Long ID;
 
     @Column(name = "first_name")
@@ -21,6 +21,7 @@ public class Student {
     private Long studentCode;
 
     @Column(name = "birth_day")
+    @Temporal(TemporalType.DATE)
     private Date birthDay;
 
     @ManyToMany
